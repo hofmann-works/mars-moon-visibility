@@ -6,9 +6,6 @@ namespace MarsMoonVisibility
 {
     public class MoonVisibilityCalculator
     {
-        //deimosRiseMinute
-        //public MoonVisibilityCalculator(MarsTime deimosRise, MarsTime deimosSet, MarsTime phobosRise, MarsTime phobosSet){
-        //}
         public static int CalculateOverlaps(MarsTime deimosRise, MarsTime deimosSet, MarsTime phobosRise, MarsTime phobosSet)
         {
             int deimosRiseMinutes = deimosRise.ToMinutes();
@@ -21,30 +18,54 @@ namespace MarsMoonVisibility
             if (deimosRiseMinutes > deimosSetMinutes)
             {
                 deimosRiseMinutes -= MarsTime.maxHour*100;
-                Console.WriteLine("New deimosRiseMinutes: "+deimosRiseMinutes);
             }
 
             if (phobosRiseMinutes > phobosSetMinutes)
             {
-                phobosRiseMinutes -= MarsTime.maxHour*100;
-                Console.WriteLine("New phobosRiseMinutes: "+phobosRiseMinutes);
+                phobosRiseMinutes -= MarsTime.maxHour * 100;
             }
 
-
-            if ((deimosRiseMinutes > phobosRiseMinutes) && (deimosRiseMinutes < phobosSetMinutes))
+            if ((phobosSetMinutes >= deimosRiseMinutes) && (phobosRiseMinutes < deimosSetMinutes))
             {
-                Console.WriteLine("deimosRise in Phobos visible time");
-                return Math.Min(deimosSetMinutes, phobosSetMinutes) - deimosRiseMinutes;
-            }
-
-            if ((deimosSetMinutes >= phobosRiseMinutes))
-            {
-                overlap = Math.Min(deimosSetMinutes,phobosSetMinutes) - Math.Max(deimosRiseMinutes, phobosRiseMinutes);
+                overlap = Math.Min(phobosSetMinutes, deimosSetMinutes) - Math.Max(phobosRiseMinutes, deimosRiseMinutes);
                 if (overlap == 0)
                     overlap = 1;
 
                 return overlap;
             }
+
+            if ((deimosSetMinutes >= phobosRiseMinutes) && (deimosRiseMinutes < phobosSetMinutes))
+            {
+                overlap = Math.Min(deimosSetMinutes, phobosSetMinutes) - Math.Max(deimosRiseMinutes, phobosRiseMinutes);
+                if (overlap == 0)
+                    overlap = 1;
+
+                return overlap;
+            }
+
+            // check for overlap on previous day:
+            phobosRiseMinutes -= MarsTime.maxHour*100;
+            phobosSetMinutes -= MarsTime.maxHour*100;
+
+
+            if ((phobosSetMinutes >= deimosRiseMinutes) && (phobosRiseMinutes < deimosSetMinutes))
+            {
+                overlap = Math.Min(phobosSetMinutes, deimosSetMinutes) - Math.Max(phobosRiseMinutes, deimosRiseMinutes);
+                if (overlap == 0)
+                    overlap = 1;
+
+                return overlap;
+            }
+
+            if ((deimosSetMinutes >= phobosRiseMinutes) && (deimosRiseMinutes < phobosSetMinutes))
+            {
+                overlap = Math.Min(deimosSetMinutes, phobosSetMinutes) - Math.Max(deimosRiseMinutes, phobosRiseMinutes);
+                if (overlap == 0)
+                    overlap = 1;
+
+                return overlap;
+            }
+
             return 0;
         }
     }
