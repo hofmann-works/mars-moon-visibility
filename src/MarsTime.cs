@@ -8,8 +8,8 @@ namespace MarsMoonVisibility
         public const int maxHour = 25;
         public const int minMinute = 0;
         public const int maxMinute = 99;
-        public int Hour { get; }
-        public int Minute { get; }
+        public int Hour { get; private set;}
+        public int Minute { get; private set;}
         public MarsTime(int hour, int minute)
         {
             if (hour <= maxHour && hour >= minHour)
@@ -26,6 +26,12 @@ namespace MarsMoonVisibility
         {
             return Hour * 100 + Minute;
         }
+
+        public void ToPreviousDay()
+        {
+            this.Hour -= maxHour;
+        }
+
 
     }
 }
