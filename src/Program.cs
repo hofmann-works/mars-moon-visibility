@@ -6,12 +6,17 @@ namespace MarsMoonVisibility
     {
         static void Main(string[] args)
         {
-            MarsTimeInterval deimos = new MarsTimeInterval(new MarsTime(13,91), new MarsTime(23,05));
-            MarsTimeInterval phobos = new MarsTimeInterval(new MarsTime(22,05), new MarsTime(24,45));
+            //Todo: naming calculator -> no moon
+            // MarsTimeInterval to struct -> copy instead of reference
+            MarsTime deimosRise = new MarsTime(12, 32);
+            MarsTime deimosSet = new MarsTime(17, 06);
+            MarsTime phobosRise = new MarsTime(17, 06);
+            MarsTime phobosSet = new MarsTime(19, 78);
+            MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
+            MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
             int overlapMinutes = MoonVisibilityCalculator.CalculateOverlaps(deimos,phobos);
 
             Console.WriteLine("Deimos and Phobos are both visible for "+overlapMinutes+" minutes.");
-
         }
     }
 }

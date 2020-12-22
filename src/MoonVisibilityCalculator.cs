@@ -4,40 +4,51 @@ namespace MarsMoonVisibility
 {
     public class MoonVisibilityCalculator
     {
-        public static int CalculateOverlaps(MarsTimeInterval moonA, MarsTimeInterval moonB)
+        public static int CalculateOverlaps(MarsTimeInterval intervalOne, MarsTimeInterval intervalTwo)
         {
-            int moonARise = moonA.getRelativeRiseMinutes();
-            int moonASet = moonA.getRelativeSetMinutes();
-            int moonBRise = moonB.getRelativeRiseMinutes();
-            int moonBSet = moonB.getRelativeSetMinutes();
+            int intervalOneStart = intervalOne.getRelativeStartMinutes();
+            int intervalOneEnd = intervalOne.getRelativeEndMinutes();
+            int intervalTwoStart = intervalTwo.getRelativeStartMinutes();
+            int intervalTwoEnd = intervalTwo.getRelativeEndMinutes();
 
             int overlap = 0;
 
-            if ((moonBSet >= moonARise) && (moonBRise <= moonASet))
+            if ((intervalTwoEnd >= intervalOneStart) && (intervalTwoStart <= intervalOneEnd))
             {
-                overlap = Math.Min(moonBSet, moonASet) - Math.Max(moonBRise, moonARise);
-                if (overlap == 0)
-                    overlap = 1;
+                overlap += Math.Min(intervalTwoEnd, intervalOneEnd) - Math.Max(intervalTwoStart, intervalOneStart);
+                if ((intervalOneStart == intervalTwoEnd) || (intervalOneEnd == intervalTwoStart))
+                    overlap += 1;
+            }
 
+            // if both intervals are on the same day return overlap
+            if (intervalOne.DaysDiffer == intervalTwo.DaysDiffer)
+            {
                 return overlap;
             }
 
-            // check for overlap on previous day:
-            moonB.ToPreviousDay();
-            moonBRise = moonB.getRelativeRiseMinutes();
-            moonBSet = moonB.getRelativeSetMinutes();
-
-
-            if ((moonBSet >= moonARise) && (moonBRise <= moonASet))
+            // if intevals are on different days check for overlap on previous day:
+            if (!(intervalOne.DaysDiffer))
             {
-                overlap = Math.Min(moonBSet, moonASet) - Math.Max(moonBRise, moonARise);
-                if (overlap == 0)
-                    overlap = 1;
-
-                return overlap;
+                intervalOneStart = intervalOne.getRelativeStartMinutesPreviousDay();
+                intervalOneEnd = intervalOne.getRelativeEndMinutesPreviousDay();
+            }
+            if (!(intervalTwo.DaysDiffer))
+            {
+                intervalTwoStart = intervalTwo.getRelativeStartMinutesPreviousDay();
+                intervalTwoEnd = intervalTwo.getRelativeEndMinutesPreviousDay();
             }
 
-            return 0;
+
+            if ((intervalTwoEnd >= intervalOneStart) && (intervalTwoStart <= intervalOneEnd))
+            {
+                overlap += Math.Min(intervalTwoEnd, intervalOneEnd) - Math.Max(intervalTwoStart, intervalOneStart);
+                if ((intervalOneStart == intervalTwoEnd) || (intervalOneEnd == intervalTwoStart))
+                    overlap += 1;
+
+            }
+
+            return overlap;
         }
+
     }
 }

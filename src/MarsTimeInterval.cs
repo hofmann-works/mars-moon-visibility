@@ -4,32 +4,39 @@ namespace MarsMoonVisibility
 {
     public class MarsTimeInterval
     {
-        public MarsTime Rise { get; }
-        public MarsTime Set { get; }
+        public MarsTime Start { get; }
+        public MarsTime End { get; }
+        public bool DaysDiffer { get; }
 
-        public MarsTimeInterval(MarsTime Rise, MarsTime Set)
+        public MarsTimeInterval(MarsTime Start, MarsTime End)
         {
-            this.Rise = Rise;
-            this.Set = Set;
+            this.Start = Start;
+            this.End = End;
+            if (Start.ToMinutes() > End.ToMinutes())
+                this.DaysDiffer = true;
         }
 
-        public int getRelativeRiseMinutes()
+        public int getRelativeStartMinutes()
         {
-            if (Rise.ToMinutes() > Set.ToMinutes())
-                return Rise.ToMinutes() - MarsTime.maxHour*(MarsTime.maxMinute+1);
+            if (DaysDiffer)
+                return Start.ToMinutes() - MarsTime.maxHour * (MarsTime.maxMinute + 1);
 
-            return Rise.ToMinutes();
+            return Start.ToMinutes();
         }
 
-        public int getRelativeSetMinutes()
+        public int getRelativeEndMinutes()
         {
-            return Set.ToMinutes();
+            return End.ToMinutes();
+        }
+        public int getRelativeStartMinutesPreviousDay()
+        {
+            return (Start.Hour - MarsTime.maxHour) * (MarsTime.maxMinute + 1) + Start.Minute;
         }
 
-        public void ToPreviousDay()
+        public int getRelativeEndMinutesPreviousDay()
         {
-            Rise.ToPreviousDay();
-            Set.ToPreviousDay();
+            return (End.Hour - MarsTime.maxHour) * (MarsTime.maxMinute + 1) + End.Minute;
+
         }
 
     }
