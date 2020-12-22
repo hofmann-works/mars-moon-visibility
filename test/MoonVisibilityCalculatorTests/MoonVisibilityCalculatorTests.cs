@@ -16,7 +16,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(24, 45);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(100, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(100, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(8, 45);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(200, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(200, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(22, 07);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(619, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(619, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(22, 07);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(807, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(807, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(4, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(1045, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(1045, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(19, 78);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(1, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(1, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(22, 11);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(1, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(1, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(18, 55);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(1, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(1, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -112,7 +112,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(24, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(200, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(200, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(18, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(2100, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(2100, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(20, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(2200, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(2200, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -148,7 +148,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(17, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(2000, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(2000, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -160,7 +160,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(05, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(800, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(800, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(18, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(0, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(0, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -184,7 +184,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(5, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(0, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(0, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -202,7 +202,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(7, 12);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(200, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(200, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -214,7 +214,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(23, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(200, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(200, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -226,7 +226,7 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(2, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(200, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(200, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
 
         [Fact]
@@ -238,7 +238,19 @@ namespace MoonVisibilityCalculatorTests
             MarsTime phobosSet = new MarsTime(2, 00);
             MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
             MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
-            Assert.Equal(101, MoonVisibilityCalculator.CalculateOverlaps(deimos, phobos));
+            Assert.Equal(101, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
+        }
+
+        [Fact]
+        public void Test21()
+        {
+            MarsTime deimosRise = new MarsTime(1, 00);
+            MarsTime deimosSet = new MarsTime(22, 00);
+            MarsTime phobosRise = new MarsTime(22, 00);
+            MarsTime phobosSet = new MarsTime(1, 00);
+            MarsTimeInterval deimos = new MarsTimeInterval(deimosRise, deimosSet);
+            MarsTimeInterval phobos = new MarsTimeInterval(phobosRise, phobosSet);
+            Assert.Equal(2, MoonVisibilityCalculator.GetOverlapMinutes(deimos, phobos));
         }
     }
 }
